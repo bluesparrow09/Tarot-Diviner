@@ -32,6 +32,8 @@ A fun and mystical device for tarot card reading! Users can touch the sensor to 
 ## System Architecture and Workflow
 
 ### System Architecture:
+![image](https://github.com/user-attachments/assets/8ea1e4e7-5279-41e3-8396-5b19fa50aefb)
+
 [Touch Sensor (TTP223)] --> [ESP32 BLE] --> [Stepper Motor (Pointer Rotation)] --> [OLED Display (Card Info)] --> [RGB Lights (Visual Feedback)]
 ### Function Workflow:
 1. User touches the sensor.
