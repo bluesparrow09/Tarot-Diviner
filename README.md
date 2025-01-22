@@ -32,4 +32,22 @@ A fun and mystical device for tarot card reading! Users can touch the sensor to 
 ## System Architecture and Workflow
 
 ### System Architecture:
+[Touch Sensor (TTP223)] --> [ESP32 BLE] --> [Stepper Motor (Pointer Rotation)] --> [OLED Display (Card Info)] --> [RGB Lights (Visual Feedback)]
+### Function Workflow:
+1. User touches the sensor.
+2. ESP32 records touch duration.
+3. Stepper motor rotates pointer dynamically.
+4. User releases touch; ESP32 determines the card.
+5. OLED displays card info and RGB lights change color.
+
+---
+
+## Datasheets
+
+Datasheets for all components are located in the `datasheets/` folder of this repository:
+- `TTP223_datasheet.pdf`
+- `28BYJ48_datasheet.pdf`
+- `ESP32_datasheet.pdf`
+- `SSD1306_datasheet.pdf`
+- `WS2812_datasheet.pdf`
 
