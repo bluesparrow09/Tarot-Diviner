@@ -12,6 +12,7 @@ A fun and mystical device for tarot card reading! Users can touch the sensor to 
   1. Records touch duration as input.
   2. Sends data to ESP32 for stepper motor control.
   3. Determines the selected card when the touch ends.
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/a603ad4c-f37b-4f77-8156-546604f982f0" />
 
 ---
 
