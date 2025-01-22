@@ -5,28 +5,12 @@ A fun and mystical device for tarot card reading! Users can touch the sensor to 
 ---
 
 ## Sensor Device
-
-- **Component:** Touch Sensor (TTP223)
-- **Function:** Detects user touch and sends the touch duration to the ESP32.
-- **How it Works:**
-  1. Records touch duration as input.
-  2. Sends data to ESP32 for stepper motor control.
-  3. Determines the selected card when the touch ends.
 <img width="1470" alt="image" src="https://github.com/user-attachments/assets/a603ad4c-f37b-4f77-8156-546604f982f0" />
 
 ---
 
 ## Display Device
-
-- **Components:**
-  - OLED Display (SSD1306): Displays card name, upright/reversed state, and meaning.
-  - Stepper Motor (28BYJ-48): Rotates a pointer dynamically based on touch duration.
-  - RGB Lights (WS2812): Provides visual feedback based on card state (e.g., green for upright, red for reversed).
-- **How it Works:**
-  1. Receives data from ESP32.
-  2. Updates OLED with card details.
-  3. Rotates pointer to the selected card.
-  4. Activates RGB lights for dynamic feedback.
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/8e7f2d8f-3585-4daf-b496-b9395d606d1c" />
 
 ---
 
