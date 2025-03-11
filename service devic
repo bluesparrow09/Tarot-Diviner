@@ -1,0 +1,86 @@
+#include "DFRobot_LcdDisplay.h"
+DFRobot_Lcd_IIC lcd(&Wire, 0x2C);
+
+// **屏幕参数**
+#define SCREEN_WIDTH  320
+#define SCREEN_HEIGHT 240
+
+// **GIF参数（150x150）**
+#define GIF_WIDTH   150
+#define GIF_HEIGHT  150
+
+// **颜色定义（适配白色背景）**
+#define TITLE_COLOR    0xFFFF  // **白色（标题）**
+#define KEYWORD_COLOR  0xFFD0  // **金色（关键词）**
+#define SYMBOL_COLOR   0x07E0  // **绿色（符号）**
+#define TEXT_COLOR     0x0000  // **黑色（正文）**
+#define BORDER_COLOR   0x8410  // **深灰色（边框）**
+
+// **布局参数**
+#define CARD_WIDTH     280
+#define CARD_HEIGHT    200
+#define PADDING        15
+#define LINE_HEIGHT    22
+#define TEXT_SIZE      18  // **统一字体大小**
+#define MAX_WIDTH      320
+
+void displayCenteredGIF() {
+    lcd.cleanScreen(); // **确保 GIF 不与上一张图片重叠**
+
+    int16_t posX = (SCREEN_WIDTH - GIF_WIDTH) / 2;
+    int16_t posY = (SCREEN_HEIGHT - GIF_HEIGHT) / 2;
+
+    // **显示GIF**
+    lcd.drawGif(posX, posY, "/tarot/loading3.gif", 0);
+}
+
+void drawCardBorder() {
+    lcd.drawRect(20, 10, CARD_WIDTH, CARD_HEIGHT, 2, BORDER_COLOR, 0, 0, 0);
+    lcd.drawLine(30, 50, 290, 50, 2, BORDER_COLOR); // **分割线**
+}
+
+void displayCard1() {
+    lcd.cleanScreen();
+    lcd.drawIcon(0, 0, "/tarot/card1.png", 256);
+}
+
+void displayCardInterpretation() {
+    lcd.cleanScreen();
+    drawCardBorder();
+
+    // **标题（居中显示）**
+    lcd.drawString(50, 20, "PAGE ♦ PENTACLES", TEXT_SIZE, TITLE_COLOR);
+
+    // **关键词**
+    lcd.drawString(40, 60, "Growth | Learning", TEXT_SIZE, KEYWORD_COLOR);
+    lcd.drawString(40, 85, "Prosperity | Practice", TEXT_SIZE, KEYWORD_COLOR);
+
+    // **符号**
+    lcd.drawString(130, 110, "♀", 32, SYMBOL_COLOR);
+
+    // **正文**
+    lcd.drawString(40, 140, "Start with confidence.", TEXT_SIZE, TEXT_COLOR);
+    lcd.drawString(40, 165, "Every step adds value.", TEXT_SIZE, TEXT_COLOR);
+    lcd.drawString(40, 190, "Growth takes time.", TEXT_SIZE, TEXT_COLOR);
+}
+
+void setup() {
+    lcd.begin();
+  
+    // **阶段 1：显示卡牌背面**
+    lcd.drawIcon(0, 0, "/tarot/back.png", 256);
+    delay(3000);
+
+    // **阶段 2：显示加载动画**
+    displayCenteredGIF();
+    delay(2000);
+
+    // **阶段 3：显示塔罗牌 card1**
+    displayCard1();
+    delay(5000);
+
+    // **阶段 4：显示解读文本**
+    displayCardInterpretation();
+}
+
+void loop() {}
